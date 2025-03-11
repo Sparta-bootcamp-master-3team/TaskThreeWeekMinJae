@@ -131,7 +131,7 @@ class BaseballGame {
     }
     
     private func inputToArray(_ input: String) -> [Int] {
-        return input.split(separator: "").map { Int($0)! }
+        return input.split(separator: "").compactMap { Int($0) }
     }
     
     private func calculateStrikeAndBall(_ guessArray: [Int]) -> (strike: Int, ball: Int) {
