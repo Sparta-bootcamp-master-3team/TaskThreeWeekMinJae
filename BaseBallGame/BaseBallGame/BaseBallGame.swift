@@ -62,14 +62,19 @@ struct BaseBallGame {
                 
             case "2":
                 print("< 게임 기록 보기 >")
+                
+                if gameHistory.isEmpty {
+                    print("게임을 플레이하신 내역이 없습니다. 게임을 플레이해주세요!\n")
+                }
+                
                 gameHistory.forEach { history in
                     history.presentTryCount()
                 }
             case "3":
-                print("< 숫자 야구 게임을 종료합니다 >")
+                print("< 숫자 야구 게임을 종료합니다 >\n")
                 return
             default:
-                print("올바른 숫자를 입력해주세요!")
+                print("올바른 숫자를 입력해주세요!\n")
             }
         }
     }
