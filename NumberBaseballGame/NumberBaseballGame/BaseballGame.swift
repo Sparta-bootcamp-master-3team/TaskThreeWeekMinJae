@@ -30,9 +30,9 @@ class BaseballGame {
             print("1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기")
             print("원하시는 숫자를 입력해주세요: ", terminator: "")
             
-            guard let input = readLine(), let inputNumber = isVaildNumber(input, digits: 1) else { continue }
+            guard let input = readLine(), isVaildNumber(input, digits: 1) else { continue }
             
-            status = Status(rawValue: Int(inputNumber))!
+            status = Status(rawValue: Int(input)!)!
             switch status {
                 case .play:
                 startGame()
@@ -54,9 +54,9 @@ class BaseballGame {
         
         while true {
             print("숫자를 입력해주세요: ", terminator: "")
-            guard let input = readLine(), let inputNumber = isVaildNumber(input, digits: 3) else { continue }
+            guard let input = readLine(), isVaildNumber(input, digits: 3) else { continue }
             
-            let guessArray = numberToArray(inputNumber)
+            let guessArray = inputToArray(input)
             guard isVaildDuplication(guessArray) else { continue }
             
             let (strike, ball): (Int, Int) = calculateStrikeAndBall(guessArray)
@@ -100,25 +100,25 @@ class BaseballGame {
         answerArray = Array(randomNumbers)
     }
     
-    private func isVaildNumber(_ input: String, digits: Int) -> Int? {
+    private func isVaildNumber(_ input: String, digits: Int) -> Bool {
         guard !input.isEmpty, let inputNumber = Int(input) else {
             print("올바르지 않은 입력값입니다.\n")
-            return nil
+            return false
         }
         
         if digits == 1 {
             guard inputNumber >= 1 && inputNumber <= 3 else {
                 print("1, 2, 3 중에서 숫자를 입력해주세요.\n")
-                return nil
+                return false
             }
         } else if digits == 3 {
             guard inputNumber >= 100 && inputNumber <= 999 else {
                 print("3자리 숫자를 입력해주세요.\n")
-                return nil
+                return false
             }
         }
         
-        return inputNumber
+        return true
     }
     
     private func isVaildDuplication(_ guessArray: [Int]) -> Bool {
@@ -130,12 +130,8 @@ class BaseballGame {
         return true
     }
     
-    private func numberToArray(_ inputNumber: Int) -> [Int] {
-        let hundred = inputNumber / 100
-        let ten = inputNumber % 100 / 10
-        let one = inputNumber % 10
-        
-        return [hundred, ten, one]
+    private func inputToArray(_ input: String) -> [Int] {
+        return input.split(separator: "").map { Int($0)! }
     }
     
     private func calculateStrikeAndBall(_ guessArray: [Int]) -> (strike: Int, ball: Int) {
