@@ -8,7 +8,7 @@
 enum Status: Int {
     case none
     case play
-    case history
+    case record
     case quit
 }
 
@@ -18,6 +18,8 @@ class BaseballGame {
     var answerArray: [Int] = []
     
     private var status: Status = .none
+    
+    private var recordArray: [Int] = []
     
     init() {
         
@@ -34,8 +36,8 @@ class BaseballGame {
             switch status {
                 case .play:
                 startGame()
-            case .history:
-                break
+            case .record:
+                showRecord()
             case .quit:
                 break
             case .none:
@@ -47,8 +49,8 @@ class BaseballGame {
     
     private func startGame() {
         setupAnswer()
-        
-        print("게임을 시작합니다.")
+        var record: Int = 0
+        print("게임을 시작합니다. \(answerArray)")
         
         while true {
             print("숫자를 입력해주세요: ", terminator: "")
@@ -67,9 +69,23 @@ class BaseballGame {
                 print("\(strike)스트라이크 \(ball)볼")
                 
             }
+            
+            record += 1
         }
-                  
+        recordArray.append(record)
+        
         print("정답입니다.")
+    }
+    
+    private func showRecord() {
+        if recordArray.isEmpty {
+            print("아직 플레이한 게임이 없습니다.")
+            return
+        }
+        
+        for (index, record) in recordArray.enumerated() {
+            print("\(index + 1)번째 게임 시도 횟수 : \(record)")
+        }
     }
     
     private func setupAnswer() {
