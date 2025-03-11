@@ -21,15 +21,18 @@ struct BaseBallGame {
             repeatedCount += 1
             
             print("숫자를 입력하세요")
-            let myInitialNumber = readLine()
+            let myNumber = readLine()
             
-            guard let myNumber = isValidInput(input: myInitialNumber) else { return }
+            guard let input = myNumber, let intTypeInput = Int(input), intTypeInput >= 100, intTypeInput <= 999 else {
+                print("올바르지 않은 입력값입니다.")
+                continue
+            }
             
             let answerString = String(answer)
             
-            myStrikeList = findStrike(answer: answerString, myNum: myNumber)
+            myStrikeList = findStrike(answer: answerString, myNum: input)
             
-            let ballCount = findBall(answer: answerString, myNum: myNumber, myStrikeList: myStrikeList)
+            let ballCount = findBall(answer: answerString, myNum: input, myStrikeList: myStrikeList)
             
             if myStrikeList.count == 3 {
                 print("정답입니다!")
@@ -55,16 +58,6 @@ struct BaseBallGame {
             
             return answer
         }
-    }
-    
-    func isValidInput(input: String?) -> String? {
-        
-        guard let input = input, let intTypeInput = Int(input), intTypeInput >= 100, intTypeInput <= 999 else {
-            print("올바르지 않은 입력값입니다.")
-            return nil
-        }
-        
-        return input
     }
     
     func findStrike(answer: String, myNum: String) -> [Int] {
