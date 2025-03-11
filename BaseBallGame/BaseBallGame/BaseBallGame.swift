@@ -66,9 +66,10 @@ struct BaseBallGame {
                     history.presentTryCount()
                 }
             case "3":
+                print("< 숫자 야구 게임을 종료합니다 >")
                 return
             default:
-                print("올바르지 않은 입력값입니다.")
+                print("올바른 숫자를 입력해주세요!")
             }
         }
     }
