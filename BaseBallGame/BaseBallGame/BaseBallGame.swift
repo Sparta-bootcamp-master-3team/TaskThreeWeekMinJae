@@ -9,25 +9,29 @@ import Foundation
 
 struct BaseBallGame {
     func start() {
-        
+        var gameHistory = [GameHistory]()
+        var gameCount = 0
         while true {
             
             // MARK: - Onboarding
+        
             print("환영합니다! 원하시는 번호를 입력해주세요")
             print("1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기")
+            
             let mode = readLine()
             
             switch mode {
+                
             case "1":
                 var repeatedCount = 0
                 var myStrikeList = [Int]()
                 let answer = makeAnswer()
                 
+                gameCount += 1
+                
                 while true {
                     
                     if repeatedCount == 0 { print("< 게임을 시작합니다 >") }
-                    
-                    repeatedCount += 1
                     
                     // MARK: - 사용자로부터 입력 값 입력 및 유효성 검증
                     print("숫자를 입력하세요")
@@ -46,14 +50,21 @@ struct BaseBallGame {
                     
                     if myStrikeList.count == 3 {
                         print("정답입니다!")
+                        let history = GameHistory(gameNumber: gameCount, tryCount: repeatedCount)
+                        gameHistory.append(history)
                         break
                     } else {
+                        repeatedCount += 1
                         print("\(myStrikeList.count) 스트라이크, \(ballCount) 볼")
                     }
+                    
                 }
                 
             case "2":
-                print("미구현 기능입니다.")
+                print("< 게임 기록 보기 >")
+                gameHistory.forEach { history in
+                    history.presentTryCount()
+                }
             case "3":
                 return
             default:
