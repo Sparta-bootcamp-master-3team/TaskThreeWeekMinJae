@@ -39,7 +39,7 @@ class BaseballGame {
             case .record:
                 showRecord()
             case .quit:
-                break
+                return
             case .none:
                 print("ERROR")
                 return
