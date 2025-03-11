@@ -8,11 +8,12 @@
 import Foundation
 
 class BaseballGame {
-    let answerArray: [Int]
+    lazy var answerArray: [Int] = {
+        setupAnswer()
+    }()
     
     init() {
-        let randomNumbers = (1...9).shuffled()
-        self.answerArray = Array(randomNumbers.prefix(3))
+        
     }
     
     func start() {
@@ -39,6 +40,16 @@ class BaseballGame {
         }
                   
         print("정답입니다.")
+    }
+    
+    private func setupAnswer() -> [Int] {
+        var randomNumbers = (0...9).shuffled().prefix(3)
+        
+        if randomNumbers.first == 0 {
+            randomNumbers.reverse()
+        }
+        
+        return Array(randomNumbers)
     }
     
     private func isVaildNumber(_ input: String) -> Int? {
