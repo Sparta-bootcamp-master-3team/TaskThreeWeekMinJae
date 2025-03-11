@@ -30,7 +30,12 @@ class BaseballGame {
             
             guard strike != 3 else { break }
             
-            print("\(strike)스트라이크 \(ball)볼")
+            if strike == 0 && ball == 0 {
+                print("Nothing")
+            } else {
+                print("\(strike)스트라이크 \(ball)볼")
+                
+            }
         }
                   
         print("정답입니다.")
