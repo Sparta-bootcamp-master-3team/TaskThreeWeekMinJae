@@ -25,7 +25,6 @@ class BaseballGame {
             
             let guessArray = numberToArray(inputNumber)
             guard isVaildDuplication(guessArray) else { continue }
-            guard isVaildZero(guessArray) else { continue }
             
             let (strike, ball): (Int, Int) = calculateStrikeAndBall(guessArray)
             
@@ -72,15 +71,6 @@ class BaseballGame {
             return false
         }
 
-        return true
-    }
-    
-    private func isVaildZero(_ guessArray: [Int]) -> Bool {
-        if guessArray.contains(0) {
-            print("\n0은 사용할 수 없습니다.\n")
-            return false
-        }
-        
         return true
     }
     
