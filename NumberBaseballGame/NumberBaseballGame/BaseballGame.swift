@@ -30,9 +30,9 @@ class BaseballGame {
             print("1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기")
             print("원하시는 숫자를 입력해주세요: ", terminator: "")
             
-            guard let input = readLine() else { continue }
+            guard let input = readLine(), let inputNumber = isVaildNumber(input, digits: 1) else { continue }
             
-            status = Status(rawValue: Int(input)!)!
+            status = Status(rawValue: Int(inputNumber))!
             switch status {
                 case .play:
                 startGame()
@@ -54,7 +54,7 @@ class BaseballGame {
         
         while true {
             print("숫자를 입력해주세요: ", terminator: "")
-            guard let input = readLine(), let inputNumber = isVaildNumber(input) else { continue }
+            guard let input = readLine(), let inputNumber = isVaildNumber(input, digits: 3) else { continue }
             
             let guessArray = numberToArray(inputNumber)
             guard isVaildDuplication(guessArray) else { continue }
@@ -98,15 +98,22 @@ class BaseballGame {
         answerArray = Array(randomNumbers)
     }
     
-    private func isVaildNumber(_ input: String) -> Int? {
+    private func isVaildNumber(_ input: String, digits: Int) -> Int? {
         guard !input.isEmpty, let inputNumber = Int(input) else {
             print("\n올바르지 않은 입력값입니다.\n")
             return nil
         }
         
-        guard inputNumber >= 100 && inputNumber <= 999 else {
-            print("\n3자리 숫자를 입력해주세요.\n")
-            return nil
+        if digits == 1 {
+            guard inputNumber >= 1 && inputNumber <= 3 else {
+                print("\n1, 2, 3 중에서 숫자를 입력해주세요.\n")
+                return nil
+            }
+        } else if digits == 3 {
+            guard inputNumber >= 100 && inputNumber <= 999 else {
+                print("\n3자리 숫자를 입력해주세요.\n")
+                return nil
+            }
         }
         
         return inputNumber
