@@ -20,14 +20,9 @@ class BaseballGame {
         
         while true {
             print("숫자를 입력해주세요: ", terminator: "")
-            guard let input = readLine() else { continue }
-            guard let inputNumber = Int(input) else { continue }
+            guard let input = readLine(), let inputNumber = isVaildNumber(input) else { continue }
             
-            var guessArray: [Int] = []
-            guard inputNumber >= 100 && inputNumber <= 999 else { continue}
-            guessArray = numberToArray(inputNumber)
-
-            
+            let guessArray = numberToArray(inputNumber)
             let (strike, ball): (Int, Int) = calculateStrikeAndBall(guessArray)
             
             guard strike != 3 else { break }
@@ -36,6 +31,20 @@ class BaseballGame {
         }
                   
         print("정답입니다.")
+    }
+    
+    private func isVaildNumber(_ input: String) -> Int? {
+        guard !input.isEmpty, let inputNumber = Int(input) else {
+            print("\n올바르지 않은 입력값입니다.\n")
+            return nil
+        }
+        
+        guard inputNumber >= 100 && inputNumber <= 999 else {
+            print("\n3자리 숫자를 입력해주세요.\n")
+            return nil
+        }
+        
+        return inputNumber
     }
     
     private func numberToArray(_ inputNumber: Int) -> [Int] {
