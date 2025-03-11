@@ -9,3 +9,4 @@ import Foundation
 
 let game = BaseballGame()
 print(game.answerArray)
+game.start()
