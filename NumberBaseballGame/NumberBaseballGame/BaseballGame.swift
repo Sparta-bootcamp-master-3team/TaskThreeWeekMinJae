@@ -50,7 +50,7 @@ class BaseballGame {
     private func startGame() {
         setupAnswer()
         var record: Int = 0
-        print("게임을 시작합니다. \(answerArray)")
+        print("\n게임을 시작합니다. \(answerArray)")
         
         while true {
             print("숫자를 입력해주세요: ", terminator: "")
@@ -66,7 +66,7 @@ class BaseballGame {
             if strike == 0 && ball == 0 {
                 print("Nothing")
             } else {
-                print("\(strike)스트라이크 \(ball)볼")
+                print("\(strike)스트라이크 \(ball)볼\n")
                 
             }
             
@@ -74,18 +74,20 @@ class BaseballGame {
         }
         recordArray.append(record)
         
-        print("정답입니다.")
+        print("정답입니다.\n")
     }
     
     private func showRecord() {
         if recordArray.isEmpty {
-            print("아직 플레이한 게임이 없습니다.")
+            print("아직 플레이한 게임이 없습니다.\n")
             return
         }
         
+        print()
         for (index, record) in recordArray.enumerated() {
             print("\(index + 1)번째 게임 시도 횟수 : \(record)")
         }
+        print()
     }
     
     private func setupAnswer() {
@@ -100,18 +102,18 @@ class BaseballGame {
     
     private func isVaildNumber(_ input: String, digits: Int) -> Int? {
         guard !input.isEmpty, let inputNumber = Int(input) else {
-            print("\n올바르지 않은 입력값입니다.\n")
+            print("올바르지 않은 입력값입니다.\n")
             return nil
         }
         
         if digits == 1 {
             guard inputNumber >= 1 && inputNumber <= 3 else {
-                print("\n1, 2, 3 중에서 숫자를 입력해주세요.\n")
+                print("1, 2, 3 중에서 숫자를 입력해주세요.\n")
                 return nil
             }
         } else if digits == 3 {
             guard inputNumber >= 100 && inputNumber <= 999 else {
-                print("\n3자리 숫자를 입력해주세요.\n")
+                print("3자리 숫자를 입력해주세요.\n")
                 return nil
             }
         }
