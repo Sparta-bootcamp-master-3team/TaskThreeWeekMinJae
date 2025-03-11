@@ -5,18 +5,49 @@
 //  Created by 박주성 on 3/11/25.
 //
 
+enum Status: Int {
+    case none
+    case play
+    case history
+    case quit
+}
+
 import Foundation
 
 class BaseballGame {
-    lazy var answerArray: [Int] = {
-        setupAnswer()
-    }()
+    var answerArray: [Int] = []
+    
+    private var status: Status = .none
     
     init() {
         
     }
     
-    func start() {
+    func showMenu() {
+        while true {
+            print("1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기")
+            print("원하시는 숫자를 입력해주세요: ", terminator: "")
+            
+            guard let input = readLine() else { continue }
+            
+            status = Status(rawValue: Int(input)!)!
+            switch status {
+                case .play:
+                startGame()
+            case .history:
+                break
+            case .quit:
+                break
+            case .none:
+                print("ERROR")
+                return
+            }
+        }
+    }
+    
+    private func startGame() {
+        setupAnswer()
+        
         print("게임을 시작합니다.")
         
         while true {
@@ -41,14 +72,14 @@ class BaseballGame {
         print("정답입니다.")
     }
     
-    private func setupAnswer() -> [Int] {
+    private func setupAnswer() {
         var randomNumbers = (0...9).shuffled().prefix(3)
         
         if randomNumbers.first == 0 {
             randomNumbers.reverse()
         }
         
-        return Array(randomNumbers)
+        answerArray = Array(randomNumbers)
     }
     
     private func isVaildNumber(_ input: String) -> Int? {
