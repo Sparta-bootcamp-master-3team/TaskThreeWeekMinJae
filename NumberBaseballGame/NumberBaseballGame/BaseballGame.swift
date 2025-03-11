@@ -23,6 +23,8 @@ class BaseballGame {
             guard let input = readLine(), let inputNumber = isVaildNumber(input) else { continue }
             
             let guessArray = numberToArray(inputNumber)
+            guard isVaildDuplication(guessArray) else { continue }
+            
             let (strike, ball): (Int, Int) = calculateStrikeAndBall(guessArray)
             
             guard strike != 3 else { break }
@@ -45,6 +47,15 @@ class BaseballGame {
         }
         
         return inputNumber
+    }
+    
+    private func isVaildDuplication(_ guessArray: [Int]) -> Bool {
+        guard Set(guessArray).count == 3 else {
+            print("\n중복된 숫자가 있습니다.\n")
+            return false
+        }
+
+        return true
     }
     
     private func numberToArray(_ inputNumber: Int) -> [Int] {
