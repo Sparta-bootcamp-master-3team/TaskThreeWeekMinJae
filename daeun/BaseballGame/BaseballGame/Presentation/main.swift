@@ -5,7 +5,6 @@
 //  Created by 곽다은 on 3/11/25.
 //
 
-import Foundation
+let gameManager: GameManager = .init()
 
-print("Hello, World!")
-
+gameManager.startGame()

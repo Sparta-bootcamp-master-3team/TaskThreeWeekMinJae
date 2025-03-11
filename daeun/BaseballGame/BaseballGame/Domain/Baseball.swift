@@ -12,7 +12,7 @@ struct Baseball {
         var strike: Int = 0
         var ball: Int = 0
         
-        for i in 0..<3 {
+        for i in 0..<GameConstants.requiredDigitCount {
             if numbers[i] == input[i] {
                 strike += 1
             } else if numbers.contains(input[i]) {
@@ -21,5 +21,10 @@ struct Baseball {
         }
         
         return Hint(strike: strike, ball: ball)
+    }
+    
+    static func random() -> Baseball {
+        let randomNumbers = (1...9).shuffled().prefix(GameConstants.requiredDigitCount)
+        return Baseball(numbers: Array(randomNumbers))
     }
 }

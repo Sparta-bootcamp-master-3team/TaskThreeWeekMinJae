@@ -6,6 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C9116FAC2D7FF8E400FD6C8C /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FAA2D7FF8E400FD6C8C /* GameManager.swift */; };
+		C9116FAF2D7FF8E600FD6C8C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FAD2D7FF8E600FD6C8C /* main.swift */; };
+		C9116FB42D7FF92F00FD6C8C /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB12D7FF92F00FD6C8C /* GameConstants.swift */; };
+		C9116FB52D7FF92F00FD6C8C /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB22D7FF92F00FD6C8C /* Hint.swift */; };
+		C9116FB62D7FF92F00FD6C8C /* Baseball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB02D7FF92F00FD6C8C /* Baseball.swift */; };
+		C9116FB82D7FF99100FD6C8C /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB72D7FF99100FD6C8C /* InputValidator.swift */; };
+		C9116FBA2D7FF99E00FD6C8C /* InputValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB92D7FF99E00FD6C8C /* InputValidationError.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		C9116F872D7FC76300FD6C8C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,15 +30,14 @@
 
 /* Begin PBXFileReference section */
 		C9116F892D7FC76300FD6C8C /* BaseballGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BaseballGame; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9116FAA2D7FF8E400FD6C8C /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		C9116FAD2D7FF8E600FD6C8C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C9116FB02D7FF92F00FD6C8C /* Baseball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball.swift; sourceTree = "<group>"; };
+		C9116FB12D7FF92F00FD6C8C /* GameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
+		C9116FB22D7FF92F00FD6C8C /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
+		C9116FB72D7FF99100FD6C8C /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
+		C9116FB92D7FF99E00FD6C8C /* InputValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidationError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		C9116F8B2D7FC76300FD6C8C /* BaseballGame */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BaseballGame;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C9116F862D7FC76300FD6C8C /* Frameworks */ = {
@@ -44,7 +53,7 @@
 		C9116F802D7FC76300FD6C8C = {
 			isa = PBXGroup;
 			children = (
-				C9116F8B2D7FC76300FD6C8C /* BaseballGame */,
+				C9116F9F2D7FF70100FD6C8C /* BaseballGame */,
 				C9116F8A2D7FC76300FD6C8C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +64,44 @@
 				C9116F892D7FC76300FD6C8C /* BaseballGame */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C9116F9F2D7FF70100FD6C8C /* BaseballGame */ = {
+			isa = PBXGroup;
+			children = (
+				C9116FB32D7FF92F00FD6C8C /* Domain */,
+				C9116FAE2D7FF8E600FD6C8C /* Presentation */,
+				C9116FAB2D7FF8E400FD6C8C /* Application */,
+			);
+			path = BaseballGame;
+			sourceTree = "<group>";
+		};
+		C9116FAB2D7FF8E400FD6C8C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C9116FAA2D7FF8E400FD6C8C /* GameManager.swift */,
+				C9116FB72D7FF99100FD6C8C /* InputValidator.swift */,
+				C9116FB92D7FF99E00FD6C8C /* InputValidationError.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C9116FAE2D7FF8E600FD6C8C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C9116FAD2D7FF8E600FD6C8C /* main.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C9116FB32D7FF92F00FD6C8C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				C9116FB02D7FF92F00FD6C8C /* Baseball.swift */,
+				C9116FB22D7FF92F00FD6C8C /* Hint.swift */,
+				C9116FB12D7FF92F00FD6C8C /* GameConstants.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +118,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				C9116F8B2D7FC76300FD6C8C /* BaseballGame */,
 			);
 			name = BaseballGame;
 			packageProductDependencies = (
@@ -121,6 +165,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9116FB42D7FF92F00FD6C8C /* GameConstants.swift in Sources */,
+				C9116FB82D7FF99100FD6C8C /* InputValidator.swift in Sources */,
+				C9116FB52D7FF92F00FD6C8C /* Hint.swift in Sources */,
+				C9116FB62D7FF92F00FD6C8C /* Baseball.swift in Sources */,
+				C9116FBA2D7FF99E00FD6C8C /* InputValidationError.swift in Sources */,
+				C9116FAF2D7FF8E600FD6C8C /* main.swift in Sources */,
+				C9116FAC2D7FF8E400FD6C8C /* GameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
