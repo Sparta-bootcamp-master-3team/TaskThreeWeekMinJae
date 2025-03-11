@@ -65,11 +65,16 @@ struct BaseBallGame {
                 
                 if gameHistory.isEmpty {
                     print("게임을 플레이하신 내역이 없습니다. 게임을 플레이해주세요!\n")
+                } else {
+                    print("게임 기록을 불러오는 중입니다...")
+                    usleep(1500000)
+                    
+                    gameHistory.forEach { history in
+                        history.presentTryCount()
+                    }
+                    print("\n")
                 }
                 
-                gameHistory.forEach { history in
-                    history.presentTryCount()
-                }
             case "3":
                 print("===== 숫자 야구 게임 설명 =====")
                 print("1. 컴퓨터가 서로 다른 3자리 숫자를 무작위로 생성합니다 (첫 자리는 0이 올 수 없음)")
@@ -125,7 +130,6 @@ struct BaseBallGame {
         for (answerIndex, i) in answer.enumerated() {
             for (myNumIndex, j) in myNum.enumerated() {
                 if i == j {
-                    print("\(i)와 \(j)가 일치")
                     if !myStrikeList.contains(myNumIndex) && !myStrikeList.contains(answerIndex) {
                         ballCount += 1
                     }
