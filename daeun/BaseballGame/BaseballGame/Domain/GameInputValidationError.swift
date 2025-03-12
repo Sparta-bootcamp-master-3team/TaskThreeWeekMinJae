@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum InputValidationError: Error {
+enum GameInputValidationError: Error {
     case notRequiredNumberOfDigits
     case nonDigitCharacters
     case containsZeroInFirst

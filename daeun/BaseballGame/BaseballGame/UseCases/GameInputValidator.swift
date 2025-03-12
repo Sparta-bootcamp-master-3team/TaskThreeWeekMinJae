@@ -5,22 +5,22 @@
 //  Created by 곽다은 on 3/11/25.
 //
 
-struct InputValidator {
+struct GameInputValidator: Validatable {
     func validate(input: String) throws {
         guard input.count == Baseball.requiredDigitCount else {
-            throw InputValidationError.notRequiredNumberOfDigits
+            throw GameInputValidationError.notRequiredNumberOfDigits
         }
         
         guard input.allSatisfy({ $0.isNumber }) else {
-            throw InputValidationError.nonDigitCharacters
+            throw GameInputValidationError.nonDigitCharacters
         }
         
         guard input.first != "0" else {
-            throw InputValidationError.containsZeroInFirst
+            throw GameInputValidationError.containsZeroInFirst
         }
         
         guard Set(input).count == input.count else {
-            throw InputValidationError.duplicatedDigits
+            throw GameInputValidationError.duplicatedDigits
         }
     }
 }

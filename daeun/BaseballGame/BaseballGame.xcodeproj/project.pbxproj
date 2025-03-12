@@ -11,9 +11,12 @@
 		C9116FAF2D7FF8E600FD6C8C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FAD2D7FF8E600FD6C8C /* main.swift */; };
 		C9116FB52D7FF92F00FD6C8C /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB22D7FF92F00FD6C8C /* Hint.swift */; };
 		C9116FB62D7FF92F00FD6C8C /* Baseball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB02D7FF92F00FD6C8C /* Baseball.swift */; };
-		C9116FB82D7FF99100FD6C8C /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB72D7FF99100FD6C8C /* InputValidator.swift */; };
-		C9116FBA2D7FF99E00FD6C8C /* InputValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB92D7FF99E00FD6C8C /* InputValidationError.swift */; };
+		C9116FB82D7FF99100FD6C8C /* GameInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB72D7FF99100FD6C8C /* GameInputValidator.swift */; };
+		C9116FBA2D7FF99E00FD6C8C /* GameInputValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB92D7FF99E00FD6C8C /* GameInputValidationError.swift */; };
 		C936FA112D812D4E00E3C59A /* GameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA102D812D4E00E3C59A /* GameUseCase.swift */; };
+		C936FA162D81744B00E3C59A /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA152D81744B00E3C59A /* Validatable.swift */; };
+		C936FA182D8174B800E3C59A /* MenuInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA172D8174B800E3C59A /* MenuInputValidator.swift */; };
+		C936FA1A2D8174EF00E3C59A /* MenuInputValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA192D8174EF00E3C59A /* MenuInputValidationError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,9 +37,12 @@
 		C9116FAD2D7FF8E600FD6C8C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C9116FB02D7FF92F00FD6C8C /* Baseball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baseball.swift; sourceTree = "<group>"; };
 		C9116FB22D7FF92F00FD6C8C /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
-		C9116FB72D7FF99100FD6C8C /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
-		C9116FB92D7FF99E00FD6C8C /* InputValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidationError.swift; sourceTree = "<group>"; };
+		C9116FB72D7FF99100FD6C8C /* GameInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInputValidator.swift; sourceTree = "<group>"; };
+		C9116FB92D7FF99E00FD6C8C /* GameInputValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInputValidationError.swift; sourceTree = "<group>"; };
 		C936FA102D812D4E00E3C59A /* GameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUseCase.swift; sourceTree = "<group>"; };
+		C936FA152D81744B00E3C59A /* Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
+		C936FA172D8174B800E3C59A /* MenuInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInputValidator.swift; sourceTree = "<group>"; };
+		C936FA192D8174EF00E3C59A /* MenuInputValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInputValidationError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,7 @@
 		C9116F9F2D7FF70100FD6C8C /* BaseballGame */ = {
 			isa = PBXGroup;
 			children = (
+				C936FA142D81743D00E3C59A /* Common */,
 				C9116FB32D7FF92F00FD6C8C /* Domain */,
 				C9116FAE2D7FF8E600FD6C8C /* Presentation */,
 				C9116FAB2D7FF8E400FD6C8C /* UseCases */,
@@ -80,7 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				C936FA102D812D4E00E3C59A /* GameUseCase.swift */,
-				C9116FB72D7FF99100FD6C8C /* InputValidator.swift */,
+				C9116FB72D7FF99100FD6C8C /* GameInputValidator.swift */,
+				C936FA172D8174B800E3C59A /* MenuInputValidator.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -99,9 +107,18 @@
 			children = (
 				C9116FB02D7FF92F00FD6C8C /* Baseball.swift */,
 				C9116FB22D7FF92F00FD6C8C /* Hint.swift */,
-				C9116FB92D7FF99E00FD6C8C /* InputValidationError.swift */,
+				C9116FB92D7FF99E00FD6C8C /* GameInputValidationError.swift */,
+				C936FA192D8174EF00E3C59A /* MenuInputValidationError.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		C936FA142D81743D00E3C59A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C936FA152D81744B00E3C59A /* Validatable.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,11 +182,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9116FB82D7FF99100FD6C8C /* InputValidator.swift in Sources */,
+				C9116FB82D7FF99100FD6C8C /* GameInputValidator.swift in Sources */,
 				C9116FB52D7FF92F00FD6C8C /* Hint.swift in Sources */,
 				C9116FB62D7FF92F00FD6C8C /* Baseball.swift in Sources */,
-				C9116FBA2D7FF99E00FD6C8C /* InputValidationError.swift in Sources */,
+				C9116FBA2D7FF99E00FD6C8C /* GameInputValidationError.swift in Sources */,
 				C9116FAF2D7FF8E600FD6C8C /* main.swift in Sources */,
+				C936FA1A2D8174EF00E3C59A /* MenuInputValidationError.swift in Sources */,
+				C936FA162D81744B00E3C59A /* Validatable.swift in Sources */,
+				C936FA182D8174B800E3C59A /* MenuInputValidator.swift in Sources */,
 				C9116FAC2D7FF8E400FD6C8C /* GameManager.swift in Sources */,
 				C936FA112D812D4E00E3C59A /* GameUseCase.swift in Sources */,
 			);

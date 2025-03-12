@@ -8,20 +8,34 @@
 /// 게임의 핵심 로직(입력 검증, 정답 비교, 결과 생성)을 처리
 final class GameUseCase {
     private let answer: Baseball
-    private let inputValidator: InputValidator
+    private let menuInputValidator: MenuInputValidator
+    private let gameInputValidator: GameInputValidator
     
-    init(answer: Baseball = Baseball.random(), inputValidator: InputValidator = InputValidator()) {
+    init(answer: Baseball = Baseball.random(), menuInputValidator: MenuInputValidator = .init(), gameInputValidator: GameInputValidator = .init()) {
         self.answer = answer
-        self.inputValidator = inputValidator
+        self.menuInputValidator = menuInputValidator
+        self.gameInputValidator = gameInputValidator
     }
     
-    func processInput(_ input: String) -> Result<Hint, InputValidationError> {
+    func processMenuInput(_ input: String) -> Result<GameMenu, MenuInputValidationError> {
         do {
-            try inputValidator.validate(input: input)
+            try menuInputValidator.validate(input: input)
+            let selectedMenu = GameMenu(rawValue: Int(input)!)!
+            return .success(selectedMenu)
+        } catch let error as MenuInputValidationError {
+            return .failure(error)
+        } catch {
+            return .failure(.unknownError)
+        }
+    }
+    
+    func processGameInput(_ input: String) -> Result<Hint, GameInputValidationError> {
+        do {
+            try gameInputValidator.validate(input: input)
             let guess = convert(input: input)
             let hint = answer.compare(with: guess)
             return .success(hint)
-        } catch let error as InputValidationError {
+        } catch let error as GameInputValidationError {
             return .failure(error)
         } catch {
             return .failure(.unknownError)
