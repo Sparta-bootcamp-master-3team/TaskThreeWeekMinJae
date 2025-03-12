@@ -25,7 +25,13 @@ struct Baseball {
     }
     
     static func random() -> Baseball {
-        let randomNumbers = (1...9).shuffled().prefix(Baseball.requiredDigitCount)
-        return Baseball(numbers: Array(randomNumbers))
+        var numbers: [Int]
+        
+        repeat {
+            let digits = Array(0...9)
+            numbers = Array(digits.shuffled().prefix(Baseball.requiredDigitCount))
+        } while numbers.first == 0
+        
+        return Baseball(numbers: Array(numbers))
     }
 }

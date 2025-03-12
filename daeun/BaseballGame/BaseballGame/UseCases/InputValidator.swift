@@ -15,8 +15,8 @@ struct InputValidator {
             throw InputValidationError.nonDigitCharacters
         }
         
-        guard !input.contains("0") else {
-            throw InputValidationError.containsZero
+        guard input.first != "0" else {
+            throw InputValidationError.containsZeroInFirst
         }
         
         guard Set(input).count == input.count else {

@@ -10,7 +10,7 @@ import Foundation
 enum InputValidationError: Error {
     case notRequiredNumberOfDigits
     case nonDigitCharacters
-    case containsZero
+    case containsZeroInFirst
     case duplicatedDigits
     case unknownError
     
@@ -20,8 +20,8 @@ enum InputValidationError: Error {
             return "입력값은 \(Baseball.requiredDigitCount)자리여야 합니다."
         case .nonDigitCharacters:
             return "입력값은 숫자로만 구성되어야 합니다."
-        case .containsZero:
-            return "입력값에 0은 포함될 수 없습니다."
+        case .containsZeroInFirst:
+            return "입력값의 맨 앞자리에 0은 사용될 수 없습니다."
         case .duplicatedDigits:
             return "입력값에 중복된 숫자가 있습니다."
         case .unknownError:
