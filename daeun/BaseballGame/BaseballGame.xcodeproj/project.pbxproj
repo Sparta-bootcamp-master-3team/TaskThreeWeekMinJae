@@ -17,6 +17,7 @@
 		C936FA162D81744B00E3C59A /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA152D81744B00E3C59A /* Validatable.swift */; };
 		C936FA182D8174B800E3C59A /* MenuInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA172D8174B800E3C59A /* MenuInputValidator.swift */; };
 		C936FA1A2D8174EF00E3C59A /* MenuInputValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA192D8174EF00E3C59A /* MenuInputValidationError.swift */; };
+		C936FA1C2D817F5500E3C59A /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA1B2D817F5500E3C59A /* GameMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,7 @@
 		C936FA152D81744B00E3C59A /* Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
 		C936FA172D8174B800E3C59A /* MenuInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInputValidator.swift; sourceTree = "<group>"; };
 		C936FA192D8174EF00E3C59A /* MenuInputValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInputValidationError.swift; sourceTree = "<group>"; };
+		C936FA1B2D817F5500E3C59A /* GameMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				C9116FB22D7FF92F00FD6C8C /* Hint.swift */,
 				C9116FB92D7FF99E00FD6C8C /* GameInputValidationError.swift */,
 				C936FA192D8174EF00E3C59A /* MenuInputValidationError.swift */,
+				C936FA1B2D817F5500E3C59A /* GameMenu.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				C936FA162D81744B00E3C59A /* Validatable.swift in Sources */,
 				C936FA182D8174B800E3C59A /* MenuInputValidator.swift in Sources */,
 				C9116FAC2D7FF8E400FD6C8C /* GameManager.swift in Sources */,
+				C936FA1C2D817F5500E3C59A /* GameMenu.swift in Sources */,
 				C936FA112D812D4E00E3C59A /* GameUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
