@@ -18,6 +18,7 @@
 		C936FA182D8174B800E3C59A /* MenuInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA172D8174B800E3C59A /* MenuInputValidator.swift */; };
 		C936FA1A2D8174EF00E3C59A /* MenuInputValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA192D8174EF00E3C59A /* MenuInputValidationError.swift */; };
 		C936FA1C2D817F5500E3C59A /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA1B2D817F5500E3C59A /* GameMenu.swift */; };
+		C936FA202D81A8FD00E3C59A /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA1F2D81A8FD00E3C59A /* RecordManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,7 @@
 		C936FA172D8174B800E3C59A /* MenuInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInputValidator.swift; sourceTree = "<group>"; };
 		C936FA192D8174EF00E3C59A /* MenuInputValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInputValidationError.swift; sourceTree = "<group>"; };
 		C936FA1B2D817F5500E3C59A /* GameMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
+		C936FA1F2D81A8FD00E3C59A /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				C9116FAD2D7FF8E600FD6C8C /* main.swift */,
 				C9116FAA2D7FF8E400FD6C8C /* GameManager.swift */,
+				C936FA1F2D81A8FD00E3C59A /* RecordManager.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				C936FA1A2D8174EF00E3C59A /* MenuInputValidationError.swift in Sources */,
 				C936FA162D81744B00E3C59A /* Validatable.swift in Sources */,
 				C936FA182D8174B800E3C59A /* MenuInputValidator.swift in Sources */,
+				C936FA202D81A8FD00E3C59A /* RecordManager.swift in Sources */,
 				C9116FAC2D7FF8E400FD6C8C /* GameManager.swift in Sources */,
 				C936FA1C2D817F5500E3C59A /* GameMenu.swift in Sources */,
 				C936FA112D812D4E00E3C59A /* GameUseCase.swift in Sources */,

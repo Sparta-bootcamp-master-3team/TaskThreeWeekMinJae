@@ -10,10 +10,11 @@
 final class GameManager {
     private let gameUseCase: GameUseCase
     private var gameOver: Bool = false
-    private var records: [Int] = []
+    private var recordManager: RecordManager
     
-    init(gameUseCase: GameUseCase = GameUseCase()) {
+    init(gameUseCase: GameUseCase = .init(), recordManager: RecordManager = .init()) {
         self.gameUseCase = gameUseCase
+        self.recordManager = recordManager
     }
     
     func selectMenu() {
@@ -40,25 +41,25 @@ final class GameManager {
     private func handleMenuSelection(menu: GameMenu) {
         switch menu {
         case .start: startGame()
-        case .log: showLog()
+        case .log: recordManager.showLog()
         case .end: endGame()
         }
     }
     
     private func startGame() {
         print("< 게임을 시작합니다 >")
-        var counter: Int = 0
+        var tryCounter: Int = 0
         
         while !gameOver {
             print("숫자를 입력하세요")
             
             switch gameUseCase.processGameInput(getUserInput()) {
             case .success(let hint):
-                counter += 1
+                tryCounter += 1
                 showMessage(of: hint)
                 
                 if gameUseCase.isCorrect(hint) {
-                    records.append(counter)
+                    recordManager.addRecord(newRecord: tryCounter)
                     return
                 }
             case .failure(let error):
@@ -66,15 +67,6 @@ final class GameManager {
             }
             
             print()
-        }
-    }
-    
-    private func showLog() {
-        print("< 게임 기록 보기 >")
-        guard !records.isEmpty else { print("게임 기록이 없습니다!"); return }
-        
-        for i in 0..<records.count {
-            print("\(i + 1)번째 게임 : 시도 횟수 - \(records[i])")
         }
     }
     
