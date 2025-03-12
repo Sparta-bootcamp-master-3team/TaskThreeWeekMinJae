@@ -6,7 +6,7 @@ final class BaseBallGameManager {
     // 현재 게임순서
     private var currentGameIndex = 1
     // 게임모드 Protocol (게임 시작, 기록보기, 종료)
-    weak var gameContent: GameContentable?
+    weak var gameContent: BaseBallGameContentable?
     // 기록들
     private var records: [(game: Int, tryCount: Int)] = []
     

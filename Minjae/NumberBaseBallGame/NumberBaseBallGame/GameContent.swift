@@ -1,10 +1,10 @@
 import Foundation
 
 // 게임 컨텐츠 클래스
-final class GameContent: GameContentable {
+final class GameContent: BaseBallGameContentable {
     
     // 게임 로직 Protocol
-    weak var delegate: GameLogicProtocol?
+    weak var delegate: BaseBallGameLogicProtocol?
     
     // 기록 보기
     func openRecord(records: [(game: Int, tryCount: Int)]) {
