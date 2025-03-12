@@ -14,6 +14,7 @@
 		C9116FB62D7FF92F00FD6C8C /* Baseball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB02D7FF92F00FD6C8C /* Baseball.swift */; };
 		C9116FB82D7FF99100FD6C8C /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB72D7FF99100FD6C8C /* InputValidator.swift */; };
 		C9116FBA2D7FF99E00FD6C8C /* InputValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9116FB92D7FF99E00FD6C8C /* InputValidationError.swift */; };
+		C936FA112D812D4E00E3C59A /* GameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936FA102D812D4E00E3C59A /* GameUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		C9116FB22D7FF92F00FD6C8C /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
 		C9116FB72D7FF99100FD6C8C /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
 		C9116FB92D7FF99E00FD6C8C /* InputValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidationError.swift; sourceTree = "<group>"; };
+		C936FA102D812D4E00E3C59A /* GameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,25 +73,25 @@
 			children = (
 				C9116FB32D7FF92F00FD6C8C /* Domain */,
 				C9116FAE2D7FF8E600FD6C8C /* Presentation */,
-				C9116FAB2D7FF8E400FD6C8C /* Application */,
+				C9116FAB2D7FF8E400FD6C8C /* UseCases */,
 			);
 			path = BaseballGame;
 			sourceTree = "<group>";
 		};
-		C9116FAB2D7FF8E400FD6C8C /* Application */ = {
+		C9116FAB2D7FF8E400FD6C8C /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				C9116FAA2D7FF8E400FD6C8C /* GameManager.swift */,
+				C936FA102D812D4E00E3C59A /* GameUseCase.swift */,
 				C9116FB72D7FF99100FD6C8C /* InputValidator.swift */,
-				C9116FB92D7FF99E00FD6C8C /* InputValidationError.swift */,
 			);
-			path = Application;
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		C9116FAE2D7FF8E600FD6C8C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				C9116FAD2D7FF8E600FD6C8C /* main.swift */,
+				C9116FAA2D7FF8E400FD6C8C /* GameManager.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -100,6 +102,7 @@
 				C9116FB02D7FF92F00FD6C8C /* Baseball.swift */,
 				C9116FB22D7FF92F00FD6C8C /* Hint.swift */,
 				C9116FB12D7FF92F00FD6C8C /* GameConstants.swift */,
+				C9116FB92D7FF99E00FD6C8C /* InputValidationError.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				C9116FBA2D7FF99E00FD6C8C /* InputValidationError.swift in Sources */,
 				C9116FAF2D7FF8E600FD6C8C /* main.swift in Sources */,
 				C9116FAC2D7FF8E400FD6C8C /* GameManager.swift in Sources */,
+				C936FA112D812D4E00E3C59A /* GameUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,12 +13,8 @@ struct Hint {
         switch (strike, ball) {
         case (0, 0):
             return "Nothing"
-        case (GameConstants.requiredDigitCount, _):
-            return "정답입니다!"
         default:
             return "\(strike)스트라이크 \(ball)볼"
         }
     }
-    
-    var isCorrect: Bool { strike == GameConstants.requiredDigitCount }
 }

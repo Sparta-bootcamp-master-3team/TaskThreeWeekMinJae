@@ -8,7 +8,7 @@
 struct InputValidator {
     func validate(input: String) throws {
         guard input.count == GameConstants.requiredDigitCount else {
-            throw InputValidationError.notThreeCharacters
+            throw InputValidationError.notRequiredNumberOfDigits
         }
         
         guard input.allSatisfy({ $0.isNumber }) else {

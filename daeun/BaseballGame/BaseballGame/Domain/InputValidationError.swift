@@ -6,14 +6,14 @@
 //
 
 enum InputValidationError: Error {
-    case notThreeCharacters
+    case notRequiredNumberOfDigits
     case nonDigitCharacters
     case containsZero
     case duplicatedDigits
     
     var errorDescription: String? {
         switch self {
-        case .notThreeCharacters:
+        case .notRequiredNumberOfDigits:
             return "입력값은 \(GameConstants.requiredDigitCount)자리여야 합니다."
         case .nonDigitCharacters:
             return "입력값은 숫자로만 구성되어야 합니다."

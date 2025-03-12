@@ -7,12 +7,13 @@
 
 struct Baseball {
     let numbers: [Int]
+    static let digitCount: Int = GameConstants.requiredDigitCount
     
     func compare(with input: [Int]) -> Hint {
         var strike: Int = 0
         var ball: Int = 0
         
-        for i in 0..<GameConstants.requiredDigitCount {
+        for i in 0..<Baseball.digitCount {
             if numbers[i] == input[i] {
                 strike += 1
             } else if numbers.contains(input[i]) {
@@ -24,7 +25,7 @@ struct Baseball {
     }
     
     static func random() -> Baseball {
-        let randomNumbers = (1...9).shuffled().prefix(GameConstants.requiredDigitCount)
+        let randomNumbers = (1...9).shuffled().prefix(Baseball.digitCount)
         return Baseball(numbers: Array(randomNumbers))
     }
 }
