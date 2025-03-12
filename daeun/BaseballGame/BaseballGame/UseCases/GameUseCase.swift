@@ -24,8 +24,7 @@ final class GameUseCase {
         } catch let error as InputValidationError {
             return .failure(error)
         } catch {
-            // TODO: 기본 오류 메세지 추가 후 변경
-            return .failure(.nonDigitCharacters)
+            return .failure(.unknownError)
         }
     }
     
@@ -34,6 +33,6 @@ final class GameUseCase {
     }
     
     func isCorrect(_ hint: Hint) -> Bool {
-        return hint.strike == GameConstants.requiredDigitCount
+        return hint.strike == Baseball.requiredDigitCount
     }
 }

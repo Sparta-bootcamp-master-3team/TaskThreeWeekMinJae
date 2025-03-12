@@ -6,6 +6,7 @@
 //
 
 /// 사용자의 입출력 및 게임 흐름 제어에 집중
+// TODO: 입출력 역할 분리 시도
 final class GameManager {
     private let gameUseCase: GameUseCase
     
@@ -23,9 +24,9 @@ final class GameManager {
             
             switch gameUseCase.processInput(userInput) {
             case .failure(let error):
-                print(error.errorDescription ?? "에러 오류")
+                print(error.errorDescription ?? error.localizedDescription)
             case .success(let hint):
-                printMessage(of: hint)
+                showMessage(of: hint)
                 
                 if gameUseCase.isCorrect(hint) {
                     gameOver = true
@@ -41,11 +42,11 @@ final class GameManager {
         return readLine() ?? ""
     }
     
-    private func printMessage(of hint: Hint) {
+    private func showMessage(of hint: Hint) {
         switch (hint.strike, hint.ball) {
         case (0, 0):
             print("Nothing")
-        case (GameConstants.requiredDigitCount, _):
+        case (Baseball.requiredDigitCount, _):
             print("정답입니다!")
         default:
             print("\(hint.strike)스트라이크 \(hint.ball)볼")
