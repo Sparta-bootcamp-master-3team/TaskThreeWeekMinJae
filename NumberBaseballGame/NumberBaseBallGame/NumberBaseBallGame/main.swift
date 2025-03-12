@@ -14,7 +14,7 @@ class RandomValue {
         var randomValues = Set<Int>() // 중복값을 받지 않기 위해 Set
         
         while randomValues.count < 3 {
-            let value = Int.random(in: 1...9) //1-9 랜덤값
+            let value = Int.random(in: 0...9) // 0-9 랜덤값
             randomValues.insert(value)
         }
         return Array(randomValues)
@@ -38,7 +38,7 @@ class InputValue {
             // readLine()으로 받은 값을 Int로 형변환하고 배열에 저장함
             
             guard inputInt.count == 3, // input의 길이가 3이 아니거나 0이 포함되면
-                  Set(inputInt).count == 3, !input.contains("0") else {
+                  Set(inputInt).count == 3, inputInt[0] != 0 else {
                 print("올바르지 않은 입력값입니다")
                 continue
             }
@@ -71,7 +71,7 @@ class HintCompare {
         } else if strike > 0 || ball > 0 {
             print("\(strike)스트라이크 \(ball)볼")
         } else {
-            print("아웃")
+            print("Nothing")
         }
         
         return false // 다시
