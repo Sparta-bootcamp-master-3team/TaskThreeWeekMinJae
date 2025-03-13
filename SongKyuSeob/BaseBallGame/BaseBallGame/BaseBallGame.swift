@@ -40,6 +40,13 @@ struct BaseBallGame {
                         print("올바르지 않은 입력값입니다.")
                         continue
                     }
+
+                    // 중복된 숫자 검사 추가
+                    let inputSet = Set(input)
+                    guard inputSet.count == 3 else {
+                        print("서로 다른 3개의 숫자를 입력해주세요.")
+                        continue
+                    }
                     
                     // MARK: - 기존 정답과 인풋에 대한 스트라이크, 볼, 정답 여부 확인 로직
                     let answerString = String(answer)
