@@ -9,24 +9,24 @@
 // TODO: 입출력 역할 분리 시도
 final class GameManager {
     private let gameUseCase: GameUseCase
-    private var gameOver: Bool = false
     private var recordManager: RecordManager
+    private var exitGame: Bool = false
     
     init(gameUseCase: GameUseCase = .init(), recordManager: RecordManager = .init()) {
         self.gameUseCase = gameUseCase
         self.recordManager = recordManager
     }
     
-    func selectMenu() {
-        print("환영합니다! 원하시는 번호를 입력해주세요")
+    func start() {
+        greeting()
         
-        while !gameOver {
-            showMenu()
+        while !exitGame {
+            selectMenu()
         }
     }
     
-    private func showMenu() {
-        print("1. 게임 시작하기 2. 게임 기록보기 3. 종료하기")
+    private func selectMenu() {
+        presentMenuOptions()
         
         switch gameUseCase.processMenuInput(getUserInput()) {
         case .success(let menu):
@@ -50,7 +50,7 @@ final class GameManager {
         print("< 게임을 시작합니다 >")
         var tryCounter: Int = 0
         
-        while !gameOver {
+        while true {
             print("숫자를 입력하세요")
             
             switch gameUseCase.processGameInput(getUserInput()) {
@@ -87,6 +87,17 @@ final class GameManager {
     
     private func endGame() {
         print("< 숫자 야구 게임을 종료합니다 >")
-        gameOver = true
+        exitGame = true
+    }
+}
+
+// 입출력 메서드
+extension GameManager {
+    private func greeting() {
+        print("환영합니다! 원하시는 번호를 입력해주세요")
+    }
+    
+    private func presentMenuOptions() {
+        print(GameMenu.allCases.map { "\($0.rawValue). \($0.description)" }.joined(separator: " "))
     }
 }

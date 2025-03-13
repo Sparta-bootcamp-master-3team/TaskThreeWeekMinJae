@@ -7,4 +7,4 @@
 
 let gameManager: GameManager = .init()
 
-gameManager.selectMenu()
+gameManager.start()
