@@ -5,14 +5,29 @@
 //  Created by 박주성 on 3/11/25.
 //
 
-enum Status: Int {
+import Foundation
+
+enum Status {
     case none
-    case play
+    case play(strike: Int, ball: Int)
     case record
     case quit
+    
+    init?(rawValue: Int) {
+        switch rawValue {
+        case 0:
+            self = .none
+        case 1:
+            self = .play(strike: 0, ball: 0)
+        case 2:
+            self = .record
+        case 3:
+            self = .quit
+        default:
+            return nil
+        }
+    }
 }
-
-import Foundation
 
 class BaseballGame {
     var answerArray: [Int] = []
@@ -21,9 +36,6 @@ class BaseballGame {
     
     private var recordArray: [Int] = []
     
-    init() {
-        
-    }
     
     func showMenu() {
         while true {
@@ -32,17 +44,16 @@ class BaseballGame {
             
             guard let input = readLine(), isVaildNumber(input, digits: 1) else { continue }
             
-            status = Status(rawValue: Int(input)!)!
+            status = inputToStatus(input)
             switch status {
-                case .play:
+            case .play:
                 startGame()
             case .record:
                 showRecord()
             case .quit:
                 return
             case .none:
-                print("ERROR")
-                return
+                print("올바르지 않은 입력값입니다.\n")
             }
         }
     }
@@ -60,15 +71,19 @@ class BaseballGame {
             guard isVaildDuplication(guessArray) else { continue }
             
             let (strike, ball): (Int, Int) = calculateStrikeAndBall(guessArray)
+            status = Status.play(strike: strike, ball: ball)
             
-            guard strike != 3 else { break }
-            
-            if strike == 0 && ball == 0 {
-                print("Nothing")
-            } else {
-                print("\(strike)스트라이크 \(ball)볼\n")
-                
+            switch status {
+            case .play(strike: 3, ball: _):
+                return
+            case .play(strike: 0, ball: 0):
+                print("Nothing\n")
+            case .play(let strike, let ball):
+                print("\(strike)스트라이크, \(ball)볼")
+            default:
+                print("ERROR")
             }
+
             
             record += 1
         }
@@ -83,11 +98,9 @@ class BaseballGame {
             return
         }
         
-        print()
         for (index, record) in recordArray.enumerated() {
-            print("\(index + 1)번째 게임 시도 횟수 : \(record)")
+            print("\n\(index + 1)번째 게임 시도 횟수 : \(record)\n")
         }
-        print()
     }
     
     private func setupAnswer() {
@@ -147,5 +160,13 @@ class BaseballGame {
         }
         
         return (strike, ball)
+    }
+    
+    private func inputToStatus(_ input: String) -> Status {
+        guard let inputNumber = Int(input), let status = Status(rawValue: inputNumber) else {
+            return Status.none
+        }
+        
+        return status
     }
 }
