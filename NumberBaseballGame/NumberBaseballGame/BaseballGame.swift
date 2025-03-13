@@ -35,7 +35,7 @@ enum Status {
 // MARK: BaseballGame 클래스 정의
 class BaseballGame {
     // 정답 숫자 배열
-    var answerArray: [Int] = []
+    private var answerArray: [Int] = []
     // 현재 게임 상태
     private var status: Status = .none
     // 게임 기록 배열
@@ -56,6 +56,7 @@ class BaseballGame {
             case .record:
                 showRecord()
             case .quit:
+                print("\n종료합니다.")
                 return
             case .none:
                 print("올바르지 않은 입력값입니다.\n")
@@ -83,17 +84,17 @@ class BaseballGame {
             switch status {
             case .play(strike: 3, ball: _):
                 recordArray.append(record)
+                print("정답입니다.\n")
                 return
             case .play(strike: 0, ball: 0):
                 print("Nothing\n")
             case .play(let strike, let ball):
-                print("\(strike)스트라이크, \(ball)볼")
+                print("\(strike)스트라이크, \(ball)볼 (\(record)번째 시도)")
             default:
                 print("ERROR")
+                return
             }
         }
-        
-        print("정답입니다.\n")
     }
     
     // MARK: - 게임 기록 출력
@@ -103,9 +104,11 @@ class BaseballGame {
             return
         }
         
+        print()
         for (index, record) in recordArray.enumerated() {
-            print("\n\(index + 1)번째 게임 시도 횟수 : \(record)\n")
+            print("\(index + 1)번째 게임 시도 횟수 : \(record)")
         }
+        print()
     }
     
     // MARK: - 정답 숫자 배열 생성
@@ -138,7 +141,7 @@ class BaseballGame {
     
     // 게임 진행 시 입력 검증 (3자리 숫자)
     private func isVaildGameInput(_ input: String) -> Bool {
-        guard let inputNumber = Int(input) else {
+        guard Int(input) != nil else {
             print("올바르지 않은 입력값입니다.\n")
             return false
         }
