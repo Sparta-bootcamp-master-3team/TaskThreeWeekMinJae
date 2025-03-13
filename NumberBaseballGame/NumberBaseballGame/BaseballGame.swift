@@ -9,6 +9,8 @@ import Foundation
 
 // MARK: Status Enum 정의
 enum Status {
+    static let activeCount: Int = 3
+    
     case none
     case play(strike: Int, ball: Int)
     case record
@@ -126,7 +128,7 @@ class BaseballGame {
             return false
         }
         
-        guard (1...3).contains(inputNumber) else {
+        guard (1...Status.activeCount).contains(inputNumber) else {
             print("1, 2, 3 중에서 숫자를 입력해주세요.\n")
             return false
         }
@@ -141,7 +143,7 @@ class BaseballGame {
             return false
         }
         
-        guard (100...999).contains(inputNumber) else {
+        guard answerArray.count == input.count else {
             print("3자리 숫자를 입력해주세요.\n")
             return false
         }
