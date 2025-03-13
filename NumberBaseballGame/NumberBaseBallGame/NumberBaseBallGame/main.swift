@@ -11,10 +11,10 @@ import Foundation
 class RandomValue {
     
     func getRandom() -> [Int] {
-        var randomValues = Set<Int>() // 중복값을 받지 않기 위해 Set
+        var randomValues = Set<Int>()
         
         while randomValues.count < 3 {
-            let value = Int.random(in: 0...9) // 0-9 랜덤값
+            let value = randomValues.isEmpty ? Int.random(in: 1...9) : Int.random(in: 0...9)
             randomValues.insert(value)
         }
         return Array(randomValues)
@@ -29,13 +29,12 @@ class InputValue {
         
         while true {
             print("숫자를 입력하세요 ")
-            guard let input = readLine(), !input.isEmpty else { // input에 값이 없다면
+            guard let input = readLine(), !input.isEmpty else {
                 print("올바르지 않은 입력값입니다")
                 continue
-            } // readLine()은 Optional(String)값이다
+            }
             
             inputInt = input.compactMap{ Int(String($0)) }
-            // readLine()으로 받은 값을 Int로 형변환하고 배열에 저장함
             
             guard inputInt.count == 3, // input의 길이가 3이 아니거나 0이 포함되면
                   Set(inputInt).count == 3, inputInt[0] != 0 else {
@@ -57,9 +56,9 @@ class HintCompare {
         
         for index in 0..<input.count {
             
-            if answer[index] == input[index] { // 인덱스로 위치와 값이 같다면 1씩 증가
+            if answer[index] == input[index] {
                 strike += 1
-            } else if answer.contains(input[index]) { // 인덱스로 위치는 다르지만 값이 같다면 1씩 증가
+            } else if answer.contains(input[index]) {
                 ball += 1
             }
             
@@ -84,13 +83,34 @@ class BaseballGame {
     let inputValue = InputValue()
     let hintCompare = HintCompare()
     
-    func start() {
+    func active() {
         let answer = randomValue.getRandom()
         var isCorrect = false
         
         while !isCorrect {
             let userInput = inputValue.getInput()
             isCorrect = hintCompare.compare(answer: answer, input: userInput)
+            print("")
+        }
+    }
+    
+    func start() {
+        print("< 환영합니다! 원하시는 번호를 입력해주세요 >")
+        while true {
+            print("1. 게임 시작하기 2. 게임 기록 보기 3. 종료하기")
+            
+            guard let startNum = readLine() else { return }
+            
+            switch startNum {
+            case "1":
+                active()
+            case "3":
+                print("< 숫자 야구 게임을 종료합니다 >")
+                return
+            default:
+                print("올바른 숫자를 입력해주세요")
+                print("")
+            }
         }
     }
 }
