@@ -42,7 +42,7 @@ class BaseballGame {
             print("1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기")
             print("원하시는 숫자를 입력해주세요: ", terminator: "")
             
-            guard let input = readLine(), isVaildNumber(input, digits: 1) else { continue }
+            guard let input = readLine(), isValidMenuInput(input) else { continue }
             
             status = inputToStatus(input)
             switch status {
@@ -65,7 +65,7 @@ class BaseballGame {
         
         while true {
             print("숫자를 입력해주세요: ", terminator: "")
-            guard let input = readLine(), isVaildNumber(input, digits: 3) else { continue }
+            guard let input = readLine(), isVaildGameInput(input) else { continue }
             
             let guessArray = inputToArray(input)
             guard isVaildDuplication(guessArray) else { continue }
@@ -113,27 +113,34 @@ class BaseballGame {
         answerArray = Array(randomNumbers)
     }
     
-    private func isVaildNumber(_ input: String, digits: Int) -> Bool {
-        guard !input.isEmpty, let inputNumber = Int(input) else {
+    private func isVaildGameInput(_ input: String) -> Bool {
+        guard let inputNumber = Int(input) else {
             print("올바르지 않은 입력값입니다.\n")
             return false
         }
         
-        if digits == 1 {
-            guard inputNumber >= 1 && inputNumber <= 3 else {
-                print("1, 2, 3 중에서 숫자를 입력해주세요.\n")
-                return false
-            }
-        } else if digits == 3 {
-            guard inputNumber >= 100 && inputNumber <= 999 else {
-                print("3자리 숫자를 입력해주세요.\n")
-                return false
-            }
+        guard (100...999).contains(inputNumber) else {
+            print("3자리 숫자를 입력해주세요.\n")
+            return false
         }
         
         return true
     }
     
+    private func isValidMenuInput(_ input: String) -> Bool {
+        guard let inputNumber = Int(input) else {
+            print("올바르지 않은 입력값입니다.\n")
+            return false
+        }
+        
+        guard (1...3).contains(inputNumber) else {
+            print("1, 2, 3 중에서 숫자를 입력해주세요.\n")
+            return false
+        }
+        
+        return true
+    }
+
     private func isVaildDuplication(_ guessArray: [Int]) -> Bool {
         guard Set(guessArray).count == 3 else {
             print("\n중복된 숫자가 있습니다.\n")
