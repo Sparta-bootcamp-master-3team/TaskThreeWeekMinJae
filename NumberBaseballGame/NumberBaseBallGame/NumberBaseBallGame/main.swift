@@ -9,7 +9,6 @@ import Foundation
 
 // 랜덤값 class
 class RandomValue {
-    
     func getRandom() -> [Int] {
         var randomValues = Set<Int>()
         
@@ -23,7 +22,6 @@ class RandomValue {
 
 // 입력값 class
 class InputValue {
-    
     func getInput() -> [Int] {
         var inputInt = [Int]()
         
@@ -47,33 +45,19 @@ class InputValue {
     }
 }
 
-// 힌트 비교 class
-class HintCompare {
+// 게임 기록 class
+class RecordManager {
+    var counter = 0
+    var recordArray = [Int]()
     
-    func compare(answer: [Int], input: [Int]) -> Bool {
-        var strike = 0
-        var ball = 0
-        
-        for index in 0..<input.count {
-            
-            if answer[index] == input[index] {
-                strike += 1
-            } else if answer.contains(input[index]) {
-                ball += 1
-            }
-            
+    func recordPlayTimes() {
+        if recordArray.isEmpty {
+            print("아직 시작하지 않았습니다.")
         }
-        
-        if strike == 3 && ball == 0 {
-            print("정답")
-            return true // 종료
-        } else if strike > 0 || ball > 0 {
-            print("\(strike)스트라이크 \(ball)볼")
-        } else {
-            print("Nothing")
+        for i in 0..<recordArray.count {
+            print("\(i+1)번째 게임: 시도 횟수 - \(counter)")
         }
-        
-        return false // 다시
+        print("")
     }
 }
 
@@ -81,15 +65,44 @@ class HintCompare {
 class BaseballGame {
     let randomValue = RandomValue()
     let inputValue = InputValue()
-    let hintCompare = HintCompare()
+    let recordManager = RecordManager()
     
+    // 랜덤값과 사용자 값을 비교하는 메서드
+    func compare(answer: [Int], input: [Int]) -> Bool {
+        var strike = 0
+        var ball = 0
+
+        for index in 0..<input.count {
+            if answer[index] == input[index] {
+                strike += 1
+            } else if answer.contains(input[index]) {
+                ball += 1
+            }
+        }
+
+        if strike == 3 {
+            print("정답")
+            recordManager.recordArray.append(recordManager.counter) // 기록저장
+            return true // 종료
+        } else if strike > 0 || ball > 0 {
+            print("\(strike)스트라이크 \(ball)볼")
+            recordManager.counter += 1
+        } else {
+            print("Nothing")
+            recordManager.counter += 1
+        }
+
+        return false // 다시
+    }
+    
+    // 필수 구현 매서드
     func active() {
         let answer = randomValue.getRandom()
         var isCorrect = false
         
         while !isCorrect {
             let userInput = inputValue.getInput()
-            isCorrect = hintCompare.compare(answer: answer, input: userInput)
+            isCorrect = compare(answer: answer, input: userInput)
             print("")
         }
     }
@@ -104,6 +117,8 @@ class BaseballGame {
             switch startNum {
             case "1":
                 active()
+            case "2":
+                recordManager.recordPlayTimes()
             case "3":
                 print("< 숫자 야구 게임을 종료합니다 >")
                 return
