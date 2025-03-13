@@ -12,10 +12,15 @@ class RandomValue {
     func getRandom() -> [Int] {
         var randomValues = Set<Int>()
         
+        // 첫번째 값이 0이 되지 않게 하기 위함
+        let firstValue = Int.random(in: 1...9)
+        randomValues.insert(firstValue)
+        
         while randomValues.count < 3 {
-            let value = randomValues.isEmpty ? Int.random(in: 1...9) : Int.random(in: 0...9)
+            let value = Int.random(in: 0...9)
             randomValues.insert(value)
         }
+        
         return Array(randomValues)
     }
 }
