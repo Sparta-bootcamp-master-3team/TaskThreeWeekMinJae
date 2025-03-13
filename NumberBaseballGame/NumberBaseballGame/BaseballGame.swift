@@ -142,7 +142,7 @@ class BaseballGame {
     }
 
     private func isVaildDuplication(_ guessArray: [Int]) -> Bool {
-        guard Set(guessArray).count == 3 else {
+        guard Set(guessArray).count == guessArray.count else {
             print("\n중복된 숫자가 있습니다.\n")
             return false
         }
