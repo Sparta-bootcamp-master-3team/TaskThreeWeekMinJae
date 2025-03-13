@@ -15,7 +15,7 @@ class InputValue {
         while true {
             print("숫자를 입력하세요 🔢")
             guard let input = readLine(), !input.isEmpty else {
-                print("올바르지 않은 입력값입니다 🤔")
+                print("올바르지 않은 입력값입니다 🤔\n")
                 continue
             }
             
@@ -23,7 +23,7 @@ class InputValue {
             
             // input의 길이가 3이 아니거나 0이 포함되면
             guard inputInt.count == 3, Set(inputInt).count == 3, inputInt[0] != 0 else {
-                print("올바르지 않은 입력값입니다 🤔")
+                print("올바르지 않은 입력값입니다 🤔\n")
                 continue
             }
             

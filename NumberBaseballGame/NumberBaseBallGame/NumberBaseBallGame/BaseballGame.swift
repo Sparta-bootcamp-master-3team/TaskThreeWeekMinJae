@@ -24,7 +24,6 @@ class BaseballGame {
             let userInput = inputValue.getInput()
             isCorrect = hintCompare.compare(answer: answer, input: userInput)
             recordCount += 1
-            print("")
         }
         // 게임 종료 후 횟수 저장
         recordManager.addRecord(count: recordCount)
@@ -43,11 +42,10 @@ class BaseballGame {
             case "2":
                 recordManager.recordPlayTimes()
             case "3":
-                print("< 숫자 야구 게임을 종료합니다 🔚>")
+                print("< 숫자 야구 게임을 종료합니다 🔚>\n")
                 return
             default:
-                print("올바른 숫자를 입력해주세요")
-                print("")
+                print("올바른 숫자를 입력해주세요\n")
             }
         }
     }

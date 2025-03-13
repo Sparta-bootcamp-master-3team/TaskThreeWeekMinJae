@@ -22,12 +22,12 @@ class HintCompare {
         }
 
         if strike == 3 {
-            print("정답 ✅")
+            print("정답 ✅\n")
             return true // 종료
         } else if strike > 0 || ball > 0 {
-            print("\(strike)스트라이크🏏 \(ball)볼⚾️")
+            print("\(strike)스트라이크🏏 \(ball)볼⚾️\n")
         } else {
-            print("Nothing ❌")
+            print("Nothing ❌\n")
         }
 
         return false // 다시
