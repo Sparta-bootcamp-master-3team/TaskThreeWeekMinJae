@@ -157,7 +157,7 @@ class BaseballGame {
     // 배열 내 중복된 숫자 검증
     private func isVaildDuplication(_ guessArray: [Int]) -> Bool {
         guard Set(guessArray).count == guessArray.count else {
-            print("\n중복된 숫자가 있습니다.\n")
+            print("중복된 숫자가 있습니다.\n")
             return false
         }
         
