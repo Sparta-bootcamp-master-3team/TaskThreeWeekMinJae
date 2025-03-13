@@ -7,7 +7,7 @@
 
 import Foundation
 
-// 입력값 class
+// 입력값
 class InputValue {
     func getInput() -> [Int] {
         var inputInt = [Int]()

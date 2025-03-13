@@ -7,7 +7,7 @@
 
 import Foundation
 
-// main class
+// 실행 class
 class BaseballGame {
     let randomValue = RandomValue()
     let inputValue = InputValue()

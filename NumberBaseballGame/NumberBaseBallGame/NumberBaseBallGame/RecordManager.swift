@@ -7,7 +7,7 @@
 
 import Foundation
 
-// 게임 기록 class
+// 게임 기록
 class RecordManager {
     private var recordArray = [Int]()
     

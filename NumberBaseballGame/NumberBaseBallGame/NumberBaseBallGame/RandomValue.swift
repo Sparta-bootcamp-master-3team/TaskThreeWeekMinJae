@@ -7,20 +7,22 @@
 
 import Foundation
 
-// 랜덤값 class
+// 랜덤값
 class RandomValue {
     func getRandom() -> [Int] {
-        var randomValues = Set<Int>()
+        var randomValues = [Int]()
         
         // 첫번째 값이 0이 되지 않게 하기 위함
         let firstValue = Int.random(in: 1...9)
-        randomValues.insert(firstValue)
+        randomValues.append(firstValue)
         
         while randomValues.count < 3 {
             let value = Int.random(in: 0...9)
-            randomValues.insert(value)
+            if !randomValues.contains(value) {
+                randomValues.append(value)
+            }
         }
         
-        return Array(randomValues).shuffled()
+        return randomValues
     }
 }
