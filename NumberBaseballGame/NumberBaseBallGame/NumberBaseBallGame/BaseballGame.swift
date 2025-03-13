@@ -16,13 +16,13 @@ class BaseballGame {
     
     // 필수 구현 매서드
     func active() {
-        let answer = randomValue.getRandom()
+        let random = randomValue.getRandom()
         var isCorrect = false
         var recordCount = 0
         
         while !isCorrect {
             let userInput = inputValue.getInput()
-            isCorrect = hintCompare.compare(answer: answer, input: userInput)
+            isCorrect = hintCompare.compare(random: random, input: userInput)
             recordCount += 1
         }
         // 게임 종료 후 횟수 저장

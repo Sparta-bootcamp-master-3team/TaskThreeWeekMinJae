@@ -8,7 +8,7 @@
 import Foundation
 
 // 입력값
-class InputValue {
+struct InputValue {
     func getInput() -> [Int] {
         var inputInt = [Int]()
         

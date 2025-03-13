@@ -8,7 +8,7 @@
 import Foundation
 
 // 랜덤값
-class RandomValue {
+struct RandomValue {
     func getRandom() -> [Int] {
         var randomValues = [Int]()
         

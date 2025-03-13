@@ -7,16 +7,16 @@
 
 import Foundation
 
-class HintCompare {
+struct HintCompare {
     // 랜덤값과 사용자 값을 비교하는 메서드
-    func compare(answer: [Int], input: [Int]) -> Bool {
+    func compare(random: [Int], input: [Int]) -> Bool {
         var strike = 0
         var ball = 0
 
         for index in 0..<input.count {
-            if answer[index] == input[index] {
+            if random[index] == input[index] {
                 strike += 1
-            } else if answer.contains(input[index]) {
+            } else if random.contains(input[index]) {
                 ball += 1
             }
         }
