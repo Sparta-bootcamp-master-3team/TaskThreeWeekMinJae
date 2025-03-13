@@ -39,8 +39,8 @@ class InputValue {
             
             inputInt = input.compactMap{ Int(String($0)) }
             
-            guard inputInt.count == 3, // input의 길이가 3이 아니거나 0이 포함되면
-                  Set(inputInt).count == 3, inputInt[0] != 0 else {
+            // input의 길이가 3이 아니거나 0이 포함되면
+            guard inputInt.count == 3, Set(inputInt).count == 3, inputInt[0] != 0 else {
                 print("올바르지 않은 입력값입니다")
                 continue
             }
@@ -52,15 +52,18 @@ class InputValue {
 
 // 게임 기록 class
 class RecordManager {
-    var counter = 0
-    var recordArray = [Int]()
+    private var recordArray = [Int]()
+    
+    func addRecord(count: Int) {
+        recordArray.append(count)
+    }
     
     func recordPlayTimes() {
         if recordArray.isEmpty {
             print("아직 시작하지 않았습니다.")
         }
         for i in 0..<recordArray.count {
-            print("\(i+1)번째 게임: 시도 횟수 - \(counter)")
+            print("\(i + 1)번째 게임: 시도 횟수 - \(recordArray[i])")
         }
         print("")
     }
@@ -87,14 +90,11 @@ class BaseballGame {
 
         if strike == 3 {
             print("정답")
-            recordManager.recordArray.append(recordManager.counter) // 기록저장
             return true // 종료
         } else if strike > 0 || ball > 0 {
             print("\(strike)스트라이크 \(ball)볼")
-            recordManager.counter += 1
         } else {
             print("Nothing")
-            recordManager.counter += 1
         }
 
         return false // 다시
@@ -104,12 +104,16 @@ class BaseballGame {
     func active() {
         let answer = randomValue.getRandom()
         var isCorrect = false
+        var recordCounter = 0
         
         while !isCorrect {
             let userInput = inputValue.getInput()
             isCorrect = compare(answer: answer, input: userInput)
+            recordCounter += 1
             print("")
         }
+        // 게임 종료 후 횟수 저장
+        recordManager.addRecord(count: recordCounter)
     }
     
     func start() {
