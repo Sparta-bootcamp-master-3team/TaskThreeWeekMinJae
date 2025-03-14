@@ -7,5 +7,6 @@
 
 import Foundation
 
-print("Hello, World!")
-
+// 실행
+let game = BaseballGame()
+game.start()
