@@ -146,7 +146,7 @@ class BaseballGame {
             return false
         }
         
-        guard answerArray.count == input.count else {
+        guard !input.hasPrefix("0"), answerArray.count == input.count else {
             print("3자리 숫자를 입력해주세요.\n")
             return false
         }
