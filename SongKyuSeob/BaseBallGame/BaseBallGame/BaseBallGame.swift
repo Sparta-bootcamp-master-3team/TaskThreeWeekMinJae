@@ -62,7 +62,11 @@ struct BaseBallGame {
                         break
                     } else {
                         repeatedCount += 1
-                        print("\(myStrikeList.count) 스트라이크, \(ballCount) 볼")
+                        if myStrikeList.count == 0 && ballCount == 0 {
+                            print("Nothing")
+                        } else {
+                            print("\(myStrikeList.count) 스트라이크, \(ballCount) 볼")
+                        }
                     }
                     
                 }
