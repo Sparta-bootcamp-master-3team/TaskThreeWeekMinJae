@@ -32,3 +32,46 @@ let result2 = myMap(arr: [1,2,3,4,5]) {
     String($0)
 }
 print(result2)
+
+
+// MARK: 문제 3
+func a(_ arr: [Int]) -> [Int] {
+    var output = [Int]()
+    arr.enumerated().forEach { (index, element) in
+        if index % 2 == 0  { output.append(element)}
+    }
+    return output
+}
+let input3 = [1, 2, 3, 4, 5]
+print(a(input3))
+
+func b(_ arr: [String]) -> [String] {
+    var output = [String]()
+    arr.enumerated().forEach { (index, element) in
+        if index % 2 == 0  { output.append(element)}
+    }
+    return output
+}
+let input4 = ["가", "나", "다", "라", "마"]
+print(b(input4))
+
+func c<T>(_ arr: [T]) -> [T] {
+    var output = [T]()
+    arr.enumerated().forEach { (index, element) in
+        if index % 2 == 0  { output.append(element)}
+    }
+    return output
+}
+print(c(input3))
+print(c(input4))
+
+protocol Numbers { }
+func d<T: Numbers>(_ arr: [T]) -> [T] {
+    var output = [T]()
+    arr.enumerated().forEach { (index, element) in
+        if index % 2 == 0  { output.append(element)}
+    }
+    return output
+}
+
+
