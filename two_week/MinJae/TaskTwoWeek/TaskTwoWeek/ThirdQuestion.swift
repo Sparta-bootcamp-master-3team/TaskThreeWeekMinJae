@@ -12,7 +12,7 @@ class ThirdQuestion {
     
     func returnAFunctionResult() -> [Int] {
         let input = [1, 2, 3, 4, 5]
-        let result = a(input3)
+        let result = a(input)
         return result
     }
 
@@ -26,7 +26,7 @@ class ThirdQuestion {
     
     func returnBFunctionResult() -> [String] {
         let input = ["가", "나", "다", "라", "마"]
-        return b(input4)
+        return b(input)
     }
     
 

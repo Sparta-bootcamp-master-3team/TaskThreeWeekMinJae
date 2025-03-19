@@ -28,5 +28,8 @@ print(third.returnDFunctionResult())
 
 
 
-
-
+// MARK: 도전 문제 1
+var hybridCar = HybridCarClass(brand: "hybrid", model: "model", year: "2025", engine: HydrogenEngineClass())
+print(hybridCar.engine)
+hybridCar.switchEngine(to: ElectricEngineClass())
+print(hybridCar.engine)
